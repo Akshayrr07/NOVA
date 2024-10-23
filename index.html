@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea Ice and UHI Prediction</title>
+</head>
+<body>
+    <h1>Climate Prediction Tool</h1>
+    <form id="prediction-form">
+        <label for="sea_ice_input">Sea Ice Data Input:</label>
+        <input type="text" id="sea_ice_input" name="sea_ice_input"><br><br>
+
+        <label for="urban_temp">Urban Temperature (°C):</label>
+        <input type="number" id="urban_temp" name="urban_temp"><br><br>
+
+        <label for="rural_temp">Rural Temperature (°C):</label>
+        <input type="number" id="rural_temp" name="rural_temp"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Predicted Results</h2>
+    <p id="sea_ice_result"></p>
+    <p id="uhi_result"></p>
+
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const seaIceInput = document.getElementById('sea_ice_input').value;
+            const urbanTemp = document.getElementById('urban_temp').value;
+            const ruralTemp = document.getElementById('rural_temp').value;
+
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sea_ice_input: [seaIceInput],
+                    urban_temp: urbanTemp,
+                    rural_temp: ruralTemp
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('sea_ice_result').innerText = `Predicted Sea Ice Extent: ${data.sea_ice_prediction}`;
+                document.getElementById('uhi_result').innerText = `Predicted UHI Effect: ${data.uhi_prediction}`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
