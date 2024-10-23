@@ -29,3 +29,4 @@ plt.xlabel('Year')
 plt.ylabel('Extent (million km²)')
 plt.legend()
 plt.show()
+
