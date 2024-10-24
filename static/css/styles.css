@@ -1,83 +1,81 @@
-/* Style the body */
+/* Basic page styling */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    background-color: #f0f8ff;
     color: #333;
-    margin: 0;
+    text-align: center;
     padding: 20px;
 }
 
-/* Style the form */
+h1 {
+    color: #007acc;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
 form {
     background-color: #fff;
-    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }
 
-/* Style the form inputs */
-input[type="text"],
-input[type="number"] {
-    width: calc(100% - 20px);
+label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 300px;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 16px;
+    margin-bottom: 20px;
+    border: 2px solid #007acc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
-/* Style the button */
-button {
-    background-color: #4CAF50;
+/* Input focus animation */
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #004f8c;
+    box-shadow: 0 0 5px rgba(0, 123, 204, 0.5);
+    transform: scale(1.05);
+}
+
+/* Button styling */
+button[type="submit"] {
+    background-color: #007acc;
     color: white;
+    font-size: 18px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-/* Button hover effect */
-button:hover {
-    background-color: #45a049;
+/* Button hover and click animations */
+button[type="submit"]:hover {
+    background-color: #004f8c;
+    transform: scale(1.1);
 }
 
-/* Style the results section */
-h1{
-    text-align: center;
-}
-h2 {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 24px;
-    color: #333;
+button[type="submit"]:active {
+    transform: scale(0.95);
+    background-color: #002a4f;
 }
 
-/* Fade-in effect for the result paragraphs */
-#sea_ice_result,
-#uhi_result {
-    text-align: center;
-    font-size: 18px;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
+/* Animation for results */
+#sea_ice_result, #uhi_result {
+    font-size: 20px;
+    color: #007acc;
     margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Add animation to the form when hovered */
-form:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+#sea_ice_result.show, #uhi_result.show {
+    opacity: 1;
 }
