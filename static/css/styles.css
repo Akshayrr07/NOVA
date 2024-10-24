@@ -67,6 +67,12 @@ button[type="submit"]:active {
     background-color: #002a4f;
 }
 
+form:hover {
+    transform: scale(1.05);
+    transition: tranfrom 0.6s ease;
+
+}
+
 /* Animation for results */
 #sea_ice_result, #uhi_result {
     font-size: 20px;
